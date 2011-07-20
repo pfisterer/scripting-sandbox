@@ -1,7 +1,6 @@
 package de.farberg.scripting.sandbox;
 
 import java.io.FilePermission;
-import java.security.AllPermission;
 import java.security.Permission;
 import java.util.Arrays;
 import java.util.Collection;
