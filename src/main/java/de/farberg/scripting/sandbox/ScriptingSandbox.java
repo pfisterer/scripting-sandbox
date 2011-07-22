@@ -15,7 +15,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
 /**
- * Based on http://worldwizards.blogspot.com/2009/08/java-scripting-api-sandbox.html
+ * Inspired by http://worldwizards.blogspot.com/2009/08/java-scripting-api-sandbox.html
  */
 public class ScriptingSandbox {
     private ScriptEngine scriptEngine;
@@ -28,8 +28,6 @@ public class ScriptingSandbox {
 
     public void setPermissions(Collection<Permission> permissionCollection) {
         Permissions perms = new Permissions();
-
-        perms.add(new RuntimePermission("accessDeclaredMembers"));
 
         if (permissionCollection != null) {
             for (Permission p : permissionCollection) {
@@ -47,7 +45,6 @@ public class ScriptingSandbox {
             @Override
             public Object run() {
                 try {
-                    System.out.println("Running: " + code);
                     return scriptEngine.eval(code);
                 } catch (ScriptException e) {
                     e.printStackTrace();

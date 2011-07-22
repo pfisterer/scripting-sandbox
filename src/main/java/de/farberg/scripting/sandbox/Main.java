@@ -33,12 +33,19 @@ public class Main {
             ScriptingSandbox sb = new ScriptingSandbox(bshEngine);
 
             Collection<Permission> permissions = new LinkedList<Permission>();
+//            permissions.add(new RuntimePermission("accessDeclaredMembers"));
 //            permissions.add(new AllPermission());
-            permissions.add(new FilePermission("<<ALL FILES>>", "read"));
+//            permissions.add(new FilePermission("<<ALL FILES>>", "read"));
             sb.setPermissions(permissions);
 
             sb.eval("System.out.println(\"hallo\")");
-            sb.eval("File.createTempFile(\"ljlk\", \".del\").deleteOnExit();");
+            
+            try {
+                sb.eval("File.createTempFile(\"ljlk\", \".del\").deleteOnExit();");
+            } catch (Throwable e) {
+                System.out.println("Nope!");
+            }
+            
         } catch (Throwable t) {
             System.err.println("Exception in code: " + t);
             t.printStackTrace();
